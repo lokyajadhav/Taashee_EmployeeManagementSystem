@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Registration Form</h1>
+<form [formGroup]="registerForm" (ngSubmit)="Register()" mat-dialog-content>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>User Name</mat-label>
+        <input matInput type="text" formControlName="username" placeholder="User Name">
+        <mat-error *ngIf="registerForm.get('username')?.hasError('required')">username required!</mat-error>
+        <mat-error *ngIf="registerForm.get('username')?.hasError('minlength')">minimun 8 characters required!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="Email">
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">email required!</mat-error>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Please Check your email!</mat-error>
+
+
+    </mat-form-field>
+   
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Date of Birth">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="registerForm.get('dob')?.hasError('required')">DOB required!</mat-error>
+
+      </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Mobile</mat-label>
+        <input matInput type="text" formControlName="mobile" placeholder="Mobile Number">
+        <mat-error *ngIf="registerForm.get('mobile')?.hasError('required')">Mobile required!</mat-error>
+        <mat-error *ngIf="registerForm.get('mobile')?.hasError('minlength')">minimun 10 characters required!</mat-error>
+        <mat-error *ngIf="registerForm.get('mobile')?.hasError('minlength')">maximum 10 characters allowed!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="text" formControlName="password" placeholder="Password">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">password required!</mat-error>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">minimun 8 characters required!</mat-error>
+
+
+    </mat-form-field>
+    <div >
+
+        <button mat-raised-button color="primary" [disabled]="registerForm.invalid">Register</button>
+
+    </div>
+</form>

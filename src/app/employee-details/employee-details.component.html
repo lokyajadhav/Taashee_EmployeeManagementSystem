@@ -1,1 +1,37 @@
-<p>employee-details works!</p>
+<mat-card class="example-card " style="margin-left: 30%; margin-top: 5%;">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{EmployeeDetails.firstname }} {{EmployeeDetails.lastname }}</mat-card-title>
+        <mat-card-subtitle>{{EmployeeDetails.designation}}</mat-card-subtitle>
+       
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="pt-3">
+      <div>
+        <p><b>About</b></p>
+        <p>{{EmployeeDetails.firstname }} is a skilled Software Engineer with expertise in Java, Python, and JavaScript. He excels in developing scalable software solutions and thrives in collaborative team environments. With a strong problem-solving ability, John is passionate about creating efficient and innovative applications.</p>
+      </div>
+      <div  style="margin-left: 140px; margin-right: 140px;margin-top: 30px;">
+        <div class="d-flex justify-content-between">
+            <span><b>Employee Id:</b></span> <span>{{EmployeeDetails.employee_id}}</span>
+
+        </div>
+        <div class="d-flex justify-content-between">
+            <span><b>Qualification:</b></span> <span>{{EmployeeDetails.qualification}}</span>
+
+        </div>
+        <div class="d-flex justify-content-between">
+            <span><b>Age:</b></span> <span>{{EmployeeDetails.age}}</span>
+
+        </div>
+        <div class="d-flex justify-content-between">
+            <span><b>City:</b></span> <span>{{EmployeeDetails.address}}</span>
+
+        </div>
+      </div>
+      <div >
+        <button mat-raised-button color="primary" routerLink="/getEmployees">Go Back</button>
+
+    </div>
+    </mat-card-content>
+  </mat-card>

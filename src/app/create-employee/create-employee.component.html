@@ -1,1 +1,70 @@
-<p>create-employee works!</p>
+<h1 mat-dialog-title>Employee Form</h1>
+<form [formGroup]="registerForm" (ngSubmit)="addEmployee()" mat-dialog-content>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Employee Id</mat-label>
+        <input matInput type="text" formControlName="employee_id" placeholder="Employee ID">
+        <mat-error *ngIf="registerForm.get('employee_id')?.hasError('required')">Employee Id required!</mat-error>
+        <mat-error *ngIf="registerForm.get('employee_id')?.hasError('minlength')">minimun 8 characters required!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>firstname</mat-label>
+        <input matInput type="text" formControlName="firstname" placeholder="firstname">
+        <mat-error *ngIf="registerForm.get('firstname')?.hasError('required')">firstname required!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>lastname</mat-label>
+        <input matInput type="text" formControlName="lastname" placeholder="lastname">
+        <mat-error *ngIf="registerForm.get('lastname')?.hasError('required')">lastname required!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>designation</mat-label>
+        <input matInput type="text" formControlName="designation" placeholder="designation">
+        <mat-error *ngIf="registerForm.get('designation')?.hasError('required')">designation required!</mat-error>
+
+
+    </mat-form-field>
+   
+    
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>qualification</mat-label>
+        <input matInput type="text" formControlName="qualification" placeholder="qualification">
+        <mat-error *ngIf="registerForm.get('qualification')?.hasError('required')">qualification required!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>address</mat-label>
+        <input matInput type="text" formControlName="address" placeholder="address">
+        <mat-error *ngIf="registerForm.get('address')?.hasError('required')">address required!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>age</mat-label>
+        <input matInput type="text" formControlName="age" placeholder="age">
+        <mat-error *ngIf="registerForm.get('age')?.hasError('required')">age required!</mat-error>
+
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="text" formControlName="password" placeholder="Password">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">password required!</mat-error>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">minimun 8 characters required!</mat-error>
+
+
+    </mat-form-field>
+    <div >
+
+        <button mat-raised-button color="primary" [disabled]="registerForm.invalid">{{btnC}}</button>
+
+    </div>
+    </form>
+        
+

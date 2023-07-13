@@ -5,6 +5,7 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 const routes: Routes = [
   {
@@ -12,8 +13,9 @@ const routes: Routes = [
   },
   {path:'updateEmployee',component: UpdateEmployeeComponent},
   {path:'getEmployees', component: EmployeesListComponent},
-  {path:'employeeDetails',component: EmployeeDetailsComponent},
+  {path:'employeeDetails/:employee_id',component: EmployeeDetailsComponent},
   {path:'home', component: HomeComponent},
+  {path:'registerUser',component: RegisterUserComponent},
   {path:'**',redirectTo:'/home'}
 ];
 

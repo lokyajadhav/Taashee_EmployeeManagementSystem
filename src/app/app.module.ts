@@ -13,6 +13,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EmployeeInterceptor } from './employee.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,17 @@ import { HomeComponent } from './home/home.component';
     EmployeeDetailsComponent,
     EmployeesListComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    LoginDialogComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMeterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
