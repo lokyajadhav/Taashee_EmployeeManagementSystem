@@ -16,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { AccessModule } from './access/access.module';
+import { authGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,10 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     EmployeesListComponent,
     HeaderComponent,
     HomeComponent,
-    LoginDialogComponent,
-    RegisterUserComponent
+    
   ],
   imports: [
+    AccessModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -37,7 +39,10 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [{
+  providers: [
+
+    {
+
     provide: HTTP_INTERCEPTORS,
     useClass:EmployeeInterceptor,
     multi:true

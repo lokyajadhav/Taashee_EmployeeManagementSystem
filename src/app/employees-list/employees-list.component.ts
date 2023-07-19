@@ -6,6 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class EmployeesListComponent implements OnInit , AfterViewInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private employeeService: EmployeesService, private router: Router, private dialog: MatDialog){}
+  constructor(private employeeService: EmployeesService, private router: Router, private dialog: MatDialog, private authService: AuthService){}
   ngOnInit(): void {
     this.getEmployeesList();
   }
@@ -70,6 +71,10 @@ export class EmployeesListComponent implements OnInit , AfterViewInit{
       data:row
       
     });
+  }
+  getRole()
+  {
+   return this.authService.getRole();
   }
   
 

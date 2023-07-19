@@ -4,6 +4,8 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RegisterUserComponent } from '../register-user/register-user.component';
+import { EmployeesService } from '../employees.service';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -12,18 +14,33 @@ import { RegisterUserComponent } from '../register-user/register-user.component'
   styleUrls: ['./login-dialog.component.css']
 })
 export class LoginDialogComponent  implements OnInit{
-  constructor(private fb: FormBuilder,private dialogRef: MatDialogRef<LoginDialogComponent>, private router: Router,private dialog: MatDialog){}
+  constructor(private fb: FormBuilder,private dialogRef: MatDialogRef<LoginDialogComponent>, private router: Router,private dialog: MatDialog,private employeeService: EmployeesService, private authService: AuthService ){}
   loginForm!: FormGroup;
   ngOnInit(): void {
     this.loginForm=this.fb.group({
-      username:['',[Validators.required]],
-      password:['',[Validators.required]]
+      username:['',[Validators.required, Validators.minLength(5)]],
+      password:['',[Validators.required, Validators.minLength(8)]]
     })
     
   }
   Login()
     {
-      console.log('login successfull')
+      this.employeeService.login(this.loginForm.value).subscribe(
+       {
+        next:(data:any)=>{
+          console.log(data);
+          this.authService.setRole(data.user.role);
+          this.authService.setToken(data.jwtToken);
+          this.loginForm.reset();
+          this.dialogRef.close();
+        },
+        error:(res)=>
+        {
+          alert("Invalid credentials! Please check your username and password!");
+
+        }
+       }
+      )
     }
     onClose() {
       this.dialogRef.close();

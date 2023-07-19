@@ -6,12 +6,13 @@ import { EmployeesListComponent } from './employees-list/employees-list.componen
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {
-    path:'addEmployee',component: CreateEmployeeComponent
+    path:'addEmployee',component: CreateEmployeeComponent,canActivate:[authGuard],data :{role:'ADMIN'}
   },
-  {path:'updateEmployee',component: UpdateEmployeeComponent},
+  {path:'updateEmployee',component: UpdateEmployeeComponent , canActivate:[authGuard],data :{role:'ADMIN'}},
   {path:'getEmployees', component: EmployeesListComponent},
   {path:'employeeDetails/:employee_id',component: EmployeeDetailsComponent},
   {path:'home', component: HomeComponent},

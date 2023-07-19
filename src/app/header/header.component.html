@@ -8,18 +8,20 @@
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item">
-            <a class="nav-link active fs-5 pe-auto" aria-current="page" routerLink="home" style="color: white;">Home</a>
+            <a class="nav-link active fs-5 pe-auto" aria-current="page" routerLink="home" style="color: white;" *ngIf="isLoggedIn()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5 pe-auto" routerLink="getEmployees" style="color: white;">All Employees</a>
+            <a class="nav-link active fs-5 pe-auto" routerLink="getEmployees" style="color: white;" *ngIf="isLoggedIn()">All Employees</a>
           </li>
          
         </ul>
         
         <div style="margin-right: 20px;"><button mat-flat-button color="primary" 
-          style="height: 30px; background-color: rgb(194, 46, 46);" (click)="openDialogForEmpAdding()"><i class="bi bi-person-plus-fill"></i>Add Employee </button></div>
-        <div><button mat-flat-button color="primary" 
-          style="height: 30px; background-color: rgb(194, 46, 46);" (click)="openDialog()"><i class="bi bi-box-arrow-in-left"></i>SignIn </button></div>
+          style="height: 30px; background-color: rgb(194, 46, 46);" (click)="openDialogForEmpAdding()" *ngIf="isLoggedIn()  &&  getRole() ==='ADMIN'"><i class="bi bi-person-plus-fill" ></i>Add Employee </button></div>
+        <div><button *ngIf="!isLoggedIn()" mat-flat-button color="primary" 
+          style="height: 30px; background-color: rgb(194, 46, 46);" (click)="openDialog()">SignIn </button></div>
+          <div><button  *ngIf="isLoggedIn()" mat-flat-button color="primary" 
+            style="height: 30px; background-color: rgb(194, 46, 46);" (click)="logout()" >LogOut</button></div>
       </div>
     </div>
   </nav>

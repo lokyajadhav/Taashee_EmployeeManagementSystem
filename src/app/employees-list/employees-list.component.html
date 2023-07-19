@@ -61,8 +61,8 @@
               <ng-container matColumnDef="Actions">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
                 <td mat-cell *matCellDef="let row"> 
-                    <button mat-icon-button color="primary" (click)="getEditData(row)" ><mat-icon >edit</mat-icon></button>
-                    <button mat-icon-button color="warn" (click)="goToEmployeeDelete(row.employee_id)"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button color="primary" (click)="getEditData(row)"  *ngIf="getRole() ==='ADMIN'"><mat-icon >edit</mat-icon></button>
+                    <button mat-icon-button color="warn" (click)="goToEmployeeDelete(row.employee_id)" *ngIf="getRole() ==='ADMIN'"><mat-icon>delete</mat-icon></button>
                     <button mat-icon-button color="primary" (click)="goToEmployeeDetails(row.employee_id)"><mat-icon>all_out</mat-icon></button>
 
 

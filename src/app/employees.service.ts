@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class EmployeesService {
 
   constructor(private http: HttpClient) { }
-
+  requestHeader=new   HttpHeaders({"No-Auth": "True"})
   getEmployeesList()
   {
     return this.http.get("http://localhost:8080/getEmployees")
@@ -28,5 +28,13 @@ export class EmployeesService {
   updateEmployee(employeeData: any)
   {
     return this.http.put("http://localhost:8080/updateEmployee",employeeData);
+  }
+  login(loginData: any)
+  {
+    return this.http.post("http://localhost:8080/authenticate",loginData,{headers:this.requestHeader});
+  }
+  register(Data: any)
+  {
+    return this.http.post("http://localhost:8080/register",Data,{headers:this.requestHeader});
   }
 }
